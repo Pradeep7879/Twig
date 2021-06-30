@@ -17,7 +17,7 @@ Get the **Paragraph field** in twig file.
 for text(plain) field                             {{ content.field_machine_name }}
 for viewfield                                     {{ content.field_machine_name }}
 for Link field                                 <a href="{{ content.field_machine_name[0]['#url']|render }}">{{ content.field_machine_name[0]['#title']|render }}</a> 
-for Image field                                   <img src="{{ file_url(paragraph.field_right_branch[0].entity.uri.value)}}">
+for Image field                                   <img src="{{ file_url(paragraph.field_right_branch[0].entity.uri.value) }}">
 for Text (formatted, long, with summary) field    {{ content.field_machine_name }}
 
 If we use Paragraph into Paragraph as a Entity reference revisions field for repeated section:-
@@ -112,17 +112,27 @@ Mainly 3 Twig files are important for Views.
 		<div class="event-card">
 		  {% set node_url =  path('entity.node.canonical', {'node': row.content['#row']._entity.get('nid').value}) %}
         <a href="{{ node_url }}">
-              <img class="" src="{{file_url(row.content['#row']._entity.machine_name_of_field_image.entity.uri.value)}}">
+              <img class="" src="{{ file_url(row.content['#row']._entity.machine_name_of_field_image.entity.uri.value) }}">
             <div class="card-body">
-                  <p class="event-card-text">{{row.content['#row']._entity.machine_name_of_field_text_plain[0].value}}</p>
-                  {{row.content['#row']._entity.field_event_date[0].value| date("j M Y")}}
+                  <p class="event-card-text">{{ row.content['#row']._entity.machine_name_of_field_text_plain[0].value }}</p>
+                  {{ row.content['#row']._entity.field_event_date[0].value| date("j M Y") }}
             </div>
         </a> 
 		</div>
 	</div>
 {% endfor %}
     
-             
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+** Attaching a library in a **twig template**
+		{{ attach_library('your_module/library_name') }}
+
+
+** Attaching a library in a **preprocess function**
+		function yourmodule_preprocess_maintenance_page(&$variables) {
+		  $variables['#attached']['library'][] =  'your_module/library_name';
+		}
+
              
              
              
