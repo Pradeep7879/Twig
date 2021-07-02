@@ -96,6 +96,8 @@ Mainly 3 Twig files are important for Views.
 **  It's come in **views-view-fields--display-id.html.twig**  
   
   <div class="col-md-4">
+	{# this is for title field which is provide by views by default #} 
+	{{ fields.title.content }}
       {{ fields.field_machine_name.content }}
       <img src="{{ file_url(row._entity.field_headerbild.entity.field_media_image.entity.uri.value) }}">
   </div>
@@ -123,6 +125,13 @@ Mainly 3 Twig files are important for Views.
 {% endfor %}
     
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------
+For **Node twig**:-
+	node--machine-name.html.twig
+	
+	to get the Title field in node.html.twig
+	{{ node.label }}
+	
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ** Attaching a library in a **twig template**
 		{{ attach_library('your_module/library_name') }}
