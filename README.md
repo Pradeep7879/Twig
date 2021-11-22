@@ -31,6 +31,7 @@ First Approch:-
      <img src="{{ file_url(item['#paragraph'].machine_name_of_field_image.entity.uri.value) }}">
              <h2>{{ item['#paragraph'].machine_name_of_field_text.value }}</h2>
              <p>{{ item['#paragraph'].machine_name_of_field_text_formatted.value|raw }}</p>
+	     {{ item['#paragraph'].field_ig_link.0.url|render }}{{ item['#paragraph'].field_ig_link.0.title|render }}
              
                 {% endif %}
 		{% endfor %}
