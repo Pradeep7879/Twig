@@ -132,17 +132,42 @@ For **Node twig**:-
 	to get the Title field in node.html.twig
 	{{ node.label }}
 	
------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------
 
 ** Attaching a library in a **twig template**
+
 		{{ attach_library('your_module/library_name') }}
 
 
 ** Attaching a library in a **preprocess function**
+
 		function yourmodule_preprocess_maintenance_page(&$variables) {
 		  $variables['#attached']['library'][] =  'your_module/library_name';
 		}
 
              
-             
-             
+------------------------------------
+
+Generate relative paths
+	using this function  path($name, $parameters, $options) like this:
+
+		{#   path= / #}
+		<a href="{{ path('view.frontpage.page_1') }}">{{ 'View all content'|t }}</a>
+		{#  path=  /user/1 #}
+		<a href="{{ path('entity.user.canonical', {'user': 1}) }}">{{ 'View user'|t }}</a>
+		{#   path /node/1 #}
+		<a href="{{ path('entity.node.canonical', {'node': 1}) }}">{{ 'View node'|t }}</a>
+		Twig
+		
+Generate absolute  paths
+	using this function  url($name, $parameters, $options) like this:
+
+		{# return path like this  http://dev.domaine.com/node/1 #}
+		<a href="{{ url('entity.node.canonical', {'node': 1}) }}">{{ 'View all content'|t }}</a>
+
+		{# return path to current page#}
+		<a href="{{ url('<current>') }}">{{ 'Reload Page'|t }}</a>
+
+		{#  return path to home page #}
+		<a href="{{ url('<front>') }}">{{ 'Home Page'|t }}</a>
+
