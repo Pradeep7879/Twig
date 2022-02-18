@@ -158,7 +158,7 @@ Generate relative paths
 		{#   path /node/1 #}
 		<a href="{{ path('entity.node.canonical', {'node': 1}) }}">{{ 'View node'|t }}</a>
 		
-		<a href="{{ path('route_name', {'id': tid}) }}">{{ 'clickable text'|t }}</a>
+		<a href="{{ path('route_name', {'id': 1}) }}">{{ 'clickable text'|t }}</a>
 		Twig
 		
 Generate absolute  paths
