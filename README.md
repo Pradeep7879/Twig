@@ -20,13 +20,17 @@ Paragraph file Naming Convention **paragraph--paragraph-file-name.html.twig**
 Get the **Paragraph field** in twig file.
 
 for text(plain) field                             {{ content.field_machine_name }}
+
 for viewfield                                     {{ content.field_machine_name }}
+
 for Link field        
 
 	<a href="{{ content.field_machine_name[0]['#url']|render }}">{{ content.field_machine_name[0]['#title']|render }}</a> 
+	
 for Image field                                   
 
 	<img src="{{ file_url(paragraph.field_right_branch[0].entity.uri.value) }}">
+	
 for Text (formatted, long, with summary) field    {{ content.field_machine_name }}
 
 If we use Paragraph into Paragraph as a Entity reference revisions field for repeated section:-
