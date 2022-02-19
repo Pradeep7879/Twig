@@ -54,16 +54,18 @@ With the Paragraph we use raw filter {{ .value|raw }}
 
 With the content we use striptags filter {{ .value|striptags }}
 striptags filter replace adjacent whitespace by one space.
+
 **You can also provide tags which should not be stripped:
 
-{{ some_html|striptags('<br><p>') }}
+	{{ some_html|striptags('<br><p>') }}
 
 
---------------------------------------------------------------------------------View------------------------------------------------------------------------------
+----------------------------------------------------------View--------------------------------------------
            
 {{ base_path ~ directory }}/for-img-path
   
 Mainly 3 Twig files are important for Views.
+	
 1.)     views-view--display-id.html.twig
                        or
         views-view--display-id--machine-name.html.twig
@@ -75,33 +77,34 @@ Mainly 3 Twig files are important for Views.
 3.)     views-view-fields-display-id.html.twig
                       or
         views-view-fields--display-id--machine-name.html.twig
+	
 ------------------------------------------------------------------
   
 **  It's come in **views-view--display-id.html.twig**
   
-  <section class="">
-    <div class="container">
-    </div>
-  </section>
+		  <section class="">
+		    <div class="container">
+		    </div>
+		  </section>
   
   it's a outer part of view..
   
 **  It's come in **views-view-unformatted--display-id.html.twig**
   
-  {% for row in rows %}
-    {{ row.content }}
-  {% endfor %}
+	  {% for row in rows %}
+	    {{ row.content }}
+	  {% endfor %}
   
   here is mention the repeated body..
   
 **  It's come in **views-view-fields--display-id.html.twig**  
   
-  <div class="col-md-4">
-	{# this is for title field which is provide by views by default #} 
-	{{ fields.title.content }}
-      {{ fields.field_machine_name.content }}
-      <img src="{{ file_url(row._entity.field_headerbild.entity.field_media_image.entity.uri.value) }}">
-  </div>
+	  <div class="col-md-4">
+		{# this is for title field which is provide by views by default #} 
+		{{ fields.title.content }}
+	      {{ fields.field_machine_name.content }}
+	      <img src="{{ file_url(row._entity.field_headerbild.entity.field_media_image.entity.uri.value) }}">
+	  </div>
   
   here we mention the field which is not repeated..
   
@@ -110,22 +113,22 @@ Mainly 3 Twig files are important for Views.
     If you get the fields in **views-view-unformatted--display-id.html.twig**
     then no need to create the **views-view-fields--display-id.html.twig**
     
-{% for row in rows %}
- <div class="col-lg-6 col-md-6 col-sm-12">
-		<div class="event-card">
-		  {% set node_url =  path('entity.node.canonical', {'node': row.content['#row']._entity.get('nid').value}) %}
-        <a href="{{ node_url }}">
-              <img class="" src="{{ file_url(row.content['#row']._entity.machine_name_of_field_image.entity.uri.value) }}">
-            <div class="card-body">
-                  <p class="event-card-text">{{ row.content['#row']._entity.machine_name_of_field_text_plain[0].value }}</p>
-                  {{ row.content['#row']._entity.field_event_date[0].value| date("j M Y") }}
-            </div>
-        </a> 
+	{% for row in rows %}
+	 <div class="col-lg-6 col-md-6 col-sm-12">
+			<div class="event-card">
+			  {% set node_url =  path('entity.node.canonical', {'node': row.content['#row']._entity.get('nid').value}) %}
+		<a href="{{ node_url }}">
+		      <img class="" src="{{ file_url(row.content['#row']._entity.machine_name_of_field_image.entity.uri.value) }}">
+		    <div class="card-body">
+			  <p class="event-card-text">{{ row.content['#row']._entity.machine_name_of_field_text_plain[0].value }}</p>
+			  {{ row.content['#row']._entity.field_event_date[0].value| date("j M Y") }}
+		    </div>
+		</a> 
+			</div>
 		</div>
-	</div>
-{% endfor %}
+	{% endfor %}
     
-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------
 For **Node twig**:-
 	node--machine-name.html.twig
 	
@@ -143,6 +146,13 @@ For **Node twig**:-
 
 		function yourmodule_preprocess_maintenance_page(&$variables) {
 		  $variables['#attached']['library'][] =  'your_module/library_name';
+		}
+		
+		
+		function mytheme_preprocess_page(&$variables){
+		  if ($variables['is_front'] == TRUE) {
+		    $variables['#attached']['library'][] = 'my-theme/my-library';
+		  }
 		}
 
              
