@@ -1,14 +1,18 @@
 # Twig
 Hello, this is help to get fields in twig file.
-------------------------------------------------------------------------------Webform-----------------------------------------------------------------------------
+-----------------------------------------Webform--------------------------------------
+
 Webform file Naming Convention **webform--webform-file-name.html.twig**
 -----------------------------------------------------------------------
 Get the **Webform field** in twig file.
+
         {{ { '#type': 'webform', '#webform': 'machineName' } }}
         
-for Text field, Email, Select, Checkbox, Textarea....     {{ element.elements.field_machine_name }}
+for Text field, Email, Select, Checkbox, Textarea....     
 
------------------------------------------------------------------------------Paragraph----------------------------------------------------------------------------
+	{{ element.elements.field_machine_name }}
+
+---------------------------------------------------Paragraph---------------------------------
         
 Paragraph file Naming Convention **paragraph--paragraph-file-name.html.twig**
 ----------------------------------------------------------------------------
