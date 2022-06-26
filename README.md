@@ -195,4 +195,7 @@ Generate absolute  paths
 
 		{#  return path to home page #}
 		<a href="{{ url('<front>') }}">{{ 'Home Page'|t }}</a>
+		
+		
+		test
 
